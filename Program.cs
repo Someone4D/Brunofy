@@ -2,8 +2,6 @@
 
 string themeColor = "CYAN";
 
-string bilongs = "";
-
 //List<string> BandsList = new List<string>(){"System of a Down","Disturbed","Palisades", "Nickelback", "Radwimps", "Eminem" };
 Dictionary<string, List<int>> bandsRegistered = new Dictionary<string, List<int>>();
 bandsRegistered.Add("System of a Down", new List<int> {10, 8, 4,});
