@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bruno\\Desktop\\SurvivalConsoleRPG\\SurvivalConsoleRPG.csproj": {}
+    "C:\\Users\\Bruno\\Brunojetos\\Brunofy\\SurvivalConsoleRPG.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bruno\\Desktop\\SurvivalConsoleRPG\\SurvivalConsoleRPG.csproj": {
+    "C:\\Users\\Bruno\\Brunojetos\\Brunofy\\SurvivalConsoleRPG.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bruno\\Desktop\\SurvivalConsoleRPG\\SurvivalConsoleRPG.csproj",
+        "projectUniqueName": "C:\\Users\\Bruno\\Brunojetos\\Brunofy\\SurvivalConsoleRPG.csproj",
         "projectName": "SurvivalConsoleRPG",
-        "projectPath": "C:\\Users\\Bruno\\Desktop\\SurvivalConsoleRPG\\SurvivalConsoleRPG.csproj",
+        "projectPath": "C:\\Users\\Bruno\\Brunojetos\\Brunofy\\SurvivalConsoleRPG.csproj",
         "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bruno\\Desktop\\SurvivalConsoleRPG\\obj\\",
+        "outputPath": "C:\\Users\\Bruno\\Brunojetos\\Brunofy\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",

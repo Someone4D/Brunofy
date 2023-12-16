@@ -1,6 +1,6 @@
 ﻿using System;
 
-string themeColor = "RED";
+string themeColor = "BLUE";
 
 //List<string> BandsList = new List<string>(){"System of a Down","Disturbed","Palisades", "Nickelback", "Radwimps", "Eminem" };
 Dictionary<string, List<int>> bandsRegistered = new Dictionary<string, List<int>>();
