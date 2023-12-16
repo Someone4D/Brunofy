@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 string themeColor = "RED";
 
@@ -60,6 +61,9 @@ void ShowMenu()
         case "7" or "exit" : Console.WriteLine("Obrigado e volte sempre!");
         WaitSeconds(2);
         Environment.Exit(0);
+        break;
+
+        case "8" : ChangeThemeColor();
         break;
 
         default : Console.WriteLine("Opção digitada inválida.");
@@ -207,3 +211,24 @@ void WaitSeconds(int seconds)
 {
     Thread.Sleep(seconds * 1000);
 }
+
+static void ChangeThemeColor()
+    {
+        for (int i = 0; i < 24; i++)
+        {
+                try
+            {
+                string edgePath = @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe";
+                string argumentos = $"--new-window {"https://www.youtube.com/shorts/T8bO1iKu76g"}";
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = edgePath,
+                    Arguments = argumentos,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+    }
