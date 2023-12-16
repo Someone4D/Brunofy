@@ -1,6 +1,6 @@
 ﻿using System;
 
-string themeColor = "BLUE";
+string themeColor = "CYAN";
 
 string bilongs = "";
 
