@@ -16,16 +16,12 @@ void ShowMenu()
     Console.Clear();
     //Arrumar no futuro culpa do Pedro Console.Clear();
     ShowTitle(@"
- _______  _______  ______   ______    _______  _______  __   __ 
-|       ||       ||      | |    _ |  |       ||       ||  | |  |
-|    _  ||    ___||  _    ||   | ||  |   _   ||    ___||  |_|  |
-|   |_| ||   |___ | | |   ||   |_||_ |  | |  ||   |___ |       |
-|    ___||    ___|| |_|   ||    __  ||  |_|  ||    ___||_     _|
-|   |    |   |___ |       ||   |  | ||       ||   |      |   |  
-|___|    |_______||______| |___|  |_||_______||___|      |___|  
+ _____ _____ _____ _____ _____ _____ __ __ 
+| __  | __  |  |  |   | |     |   __|  |  |
+| __ -|    -|  |  | | | |  |  |   __|_   _|
+|_____|__|__|_____|_|___|_____|__|    |_|  
                                            
     ");
-
     Console.WriteLine("1 - Registrar bandas.");
     Console.WriteLine("2 - Consultar bandas registradas.");
     Console.WriteLine("3 - Avaliar bandas registradas.");
