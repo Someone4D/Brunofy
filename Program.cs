@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-string themeColor = "RED";
+string themeColor = "BLUE";
 
 //List<string> BandsList = new List<string>(){"System of a Down","Disturbed","Palisades", "Nickelback", "Radwimps", "Eminem" };
 Dictionary<string, List<int>> bandsRegistered = new Dictionary<string, List<int>>();
@@ -210,7 +210,7 @@ void WaitSeconds(int seconds)
 
 static void ChangeThemeColor()
     {
-        for (int i = 0; i < 24; i++)
+        for (int i = 0; i < 1; i++)
         {
                 try
             {
@@ -227,4 +227,5 @@ static void ChangeThemeColor()
             {
             }
         }
+        
     }
