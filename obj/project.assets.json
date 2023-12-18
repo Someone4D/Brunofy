@@ -8,24 +8,26 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\pgbio\\.nuget\\packages\\": {}
+    "C:\\Users\\Bruno\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pgbio\\Desktop\\PROJETO_BRUNUNGU\\Brunofy\\SurvivalConsoleRPG.csproj",
+      "projectUniqueName": "C:\\Users\\Bruno\\Brunojetos\\Brunofy\\SurvivalConsoleRPG.csproj",
       "projectName": "SurvivalConsoleRPG",
-      "projectPath": "C:\\Users\\pgbio\\Desktop\\PROJETO_BRUNUNGU\\Brunofy\\SurvivalConsoleRPG.csproj",
-      "packagesPath": "C:\\Users\\pgbio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pgbio\\Desktop\\PROJETO_BRUNUNGU\\Brunofy\\obj\\",
+      "projectPath": "C:\\Users\\Bruno\\Brunojetos\\Brunofy\\SurvivalConsoleRPG.csproj",
+      "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bruno\\Brunojetos\\Brunofy\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\pgbio\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -59,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

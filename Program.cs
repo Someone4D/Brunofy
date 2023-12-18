@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
 
-string themeColor = "BLUE";
+
+string bandsFilePath = "Bands.ini";
+string configurationFilePath = "Configurations.ini";
+string themeColor = ReadFile(configurationFilePath).FirstOrDefault()!;
+List<string> bandsList = ReadFile(bandsFilePath);
 
 //List<string> BandsList = new List<string>(){"System of a Down","Disturbed","Palisades", "Nickelback", "Radwimps", "Eminem" };
 Dictionary<string, List<int>> bandsRegistered = new Dictionary<string, List<int>>();
-bandsRegistered.Add("System of a Down", new List<int> {10, 8, 4,});
-bandsRegistered.Add("Disturbed", new List<int> ());
-bandsRegistered.Add("Palisades", new List<int> ());
+
+foreach (var item in bandsList)
+{
+    bandsRegistered.Add(item, new List<int>());
+}
 
 ShowMenu();
 
@@ -22,15 +28,14 @@ void ShowMenu()
 |_____|__|__|_____|_|___|_____|__|    |_|  
                                            
     ");
-    Binino();
     Console.WriteLine("1 - Registrar bandas.");
     Console.WriteLine("2 - Consultar bandas registradas."); //conseguir acessar as notas dentro das bandas
-    Console.WriteLine("3 - Avaliar bandas registradas.");
-    Console.WriteLine("4 - Exibir a média de uma banda registrada."); //bandas novas registradas são criadas com uma nota padrão "1", interferindo o calculo.
+    Console.WriteLine("3 - Avaliar bandas registradas."); // gravar permanente
+    Console.WriteLine("4 - Exibir a média de uma banda registrada.");
     Console.WriteLine("5 - Deletar bandas registradas."); //autoexplicativo
     Console.WriteLine("6 - Escolher um tema.");
     Console.WriteLine("7 - Sair do programa.");
-    //8 - Pedro é um gatinho e logo vou tirar o mongol.
+    //8 - Pedro
     
     Console.Write("\nDigite sua opção: ");
     string chosenOption = Console.ReadLine()!;
@@ -82,10 +87,22 @@ void RegisterBand()
     ShowTitle("Registro de bandas\n");
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string bandName = Console.ReadLine()!;
-    bandsRegistered.Add(bandName, new List<int> {1});
-    Console.WriteLine($"A banda {bandName} foi registrada com sucesso!");
-    WaitSeconds(2);
-    ShowMenu();
+    
+    if(bandsRegistered.ContainsKey(bandName))
+    {
+        Console.WriteLine($"A banda {bandName} já está registrada");
+        Console.WriteLine("Pressione qualquer tecla para continuar...");
+        Console.ReadKey();
+        ShowMenu();
+    }
+    else
+    {
+        bandsRegistered.Add(bandName, new List<int>());
+        Console.WriteLine($"A banda {bandName} foi registrada com sucesso!");
+        WriteFile(bandsFilePath, bandName, true);
+        WaitSeconds(2);
+        ShowMenu();
+    }
 }
 
 void ConsultBands()
@@ -96,7 +113,7 @@ void ConsultBands()
     // {
     //     Console.WriteLine("{0}- {1}", i, BandsList[i]);
     // }
-    foreach (string band in bandsRegistered.Keys)
+    foreach (string band in ReadFile(bandsFilePath))
     {
         Console.WriteLine(band);
     }
@@ -153,7 +170,11 @@ void ShowBandRate()
     if(bandsRegistered.ContainsKey(bandName))
     {
         List<int> bandScores = bandsRegistered[bandName];
-        Console.WriteLine($"\nMédia da banda {bandName} é {bandScores.Average()}");
+        if(bandScores.Count > 0)
+            Console.WriteLine($"\nMédia da banda {bandName} é {bandScores.Average()}");
+        else
+            Console.WriteLine("Você precisa de ao menos uma nota registrada, para apresentar a média.");
+
         Console.ReadKey();
     }
     else
@@ -185,6 +206,8 @@ void ThemeSelect()
     - Cyan");
     Console.Write("Digite uma cor para o tema desejado: ");
     themeColor = Console.ReadLine()!.ToUpper();
+    
+    WriteFile(configurationFilePath, themeColor, false);
     ShowMenu();
 }
 
@@ -203,12 +226,38 @@ void ShowTitle(string title)
         Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine(title);
     Console.ForegroundColor = ConsoleColor.White;
+
 }
 
 void WaitSeconds(int seconds)
 {
     Thread.Sleep(seconds * 1000);
 }
+
+void WriteFile(string path, string text, bool append)
+{
+    using (StreamWriter writer = new StreamWriter(path, append))
+    {
+        writer.WriteLine(text);
+    }
+
+}
+
+List<string> ReadFile(string path)
+{
+    List<string> text = new List<string>();
+
+    using (StreamReader reader = new StreamReader(path))
+    {
+        foreach (string line in File.ReadLines(path))
+        {
+            text.Add(line);
+        }
+    }
+    return text;
+}
+
+
 
 static void ChangeThemeColor()
 {
@@ -232,80 +281,4 @@ static void ChangeThemeColor()
     
 }
 
-void Binino()
-{
-    int color = 0;
 
-    while (true)
-    {
-        WaitSeconds(1);
-        
-        if(color == 0)
-            Console.ForegroundColor = ConsoleColor.Green;
-        else if(color == 1)
-            Console.ForegroundColor = ConsoleColor.Blue;
-        else if(color == 2)
-            Console.ForegroundColor = ConsoleColor.Yellow;
-        else if(color == 3)
-            Console.ForegroundColor = ConsoleColor.Red;
-        else if(color == 4)
-            Console.ForegroundColor = ConsoleColor.Cyan;
-        else if(color == 5)
-            Console.ForegroundColor = ConsoleColor.Magenta;
-        else if(color > 5)
-            color = 0;
-            
-        color++;
-
-        Console.WriteLine(
-        @"
-        OH NO! A WILD BUG APPEARS!
-        ..........................:=+++++++++=-:............:-===+++++===--.......................
-        ......................:-+*+++++++++++++++=:....:-=+++++++++++++++++++=:...................
-        .....................=++++++++++++++++++++*+:=++++++++++++++++++++++++++=:................
-        ...................-*++++++++++++++++++++++**++++++++++++++++++++++++++++++:..............
-        ..................++++++++++++++++++++++++**++++++**+++++++++++++++++++++++*=.............
-        .................-************+++++++++++*********++******++**++++++++++++++++:...........
-        ...............:=+++++++++++++**+++++++**+++++++++++++++++++++***+++++++++++++*...........
-        .............-++*********++++++++**+++******************+++++++++***+++++++++++*..........
-        ...........:****+++++++++******++++*+***+************+++****+++++++**+++++++++++=.........
-        .........-+*+****************+***++**++**++++++++++++***++++***++++++*++++++++++*-........
-        ........-+***+++++++++++++++***++***+**+++++++++++++++++****+++***+++++++++++++++*+=-.....
-        ........:+*+++**#####*++++*++++**++***++#%%@@**@@#--==+*+++****++++++++++++++++++*+++++-..
-        .........+=-#@@@@@.:=@#.   .:-=+****#*=*@@@@@%--@@#     ..:-=+*****++*****+++++++*+++++++=
-        .........- :@@@@@@%**@@+         :=#+  @@@@@@@@@@@@            -+***++++++++++++++++++++++
-        .........:: #@@@@@@@@@@            .#- -@**#@@@@@%-         :=+++++++****+++++++++++++++++
-        ..........:=..*%+*@@@%=          :=+**+:.-=====:        .-=++++**+++++++++++++++++++++++++
-        ..........-++=-:-:::.    ..:-==+*+*+**++*+=------====++*+++****+++++++++++++++++++++++++++
-        ...........=+*+++***++++*++++*****++++*****++++++++++******++++++**+++++++++++++++++++++++
-        .............:***************++++++**+++++***********++++++++***++++++++++++++++++++++++++
-        ............-***++++++++++++++++***++++++++******+++++*++****+++++++++++++++++++++++++++++
-        ..........:+++++*******+++******+++++++++++++++++++++++**+++++++++++++++++++++++++++++++++
-        .........=++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        ........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        .......=++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        ......:*+++++++++++++++++++++++++++++++++++++++++++++**********+++++++++++++++++++++++++++
-        .....:++++++++++++++++++++++++++++++++++++++++++***#***********#***++++**+++++++++++++++++
-        ....-#*+++++++++++++++++++++++++++++++++++++***#*******************#*++++***++++++++++++++
-        ...-#**********+++++++++++++++++++++++++*****************************#***++++**+++++++++++
-        ...************##*************************************#%%%%%#####********#*+++*+++++++++++
-        ...=**********************************************#%%@@@@%#******##*******#+++++++++++++++
-        ....=**************************************#####%@@@@%%#*****************#*+++++++++++++++
-        ......-+****#########################*****************************#****#**+**+++++++++++++
-        .......********************************************************#*******+***+++++++++++++++
-        ......:#****************************************************#**++++++++*++++++++++++++++++
-        .......-#******************#*****************************#**++++++++++++++++++++++++++++++
-        .........-==+++++**********++++++++++++++****************+++++++++++++++++++++++++++++++++
-        .................-*++*+++********+++++++++++++++++++++++++++++++++++++++++++++++++++++++*+=-
-        ...................=++***+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*+=-
-        ....................:=*+++++++++*******++++++++++++++++++***++++++++++++++++++++++**#+=---
-        ......................:-=++++++++++++++******************++++++++++++++++++++++*****=-----
-        ..........................-+**+++++++++++++++++++++++++++++++++++++++*+++++****+**=-------
-        .....................::--===-=+**********++++***+++++++++++++++******++++++++*++=---------
-        ..................:-==----------=+++*+++++++++++*********+++++++++++++++*+++=-------------
-        .................==-----------------===++++++++++**++++++++++**+*+++++==------------------");
-        Console.WriteLine();
-        Console.ForegroundColor = ConsoleColor.White;
-    }
-
-}
