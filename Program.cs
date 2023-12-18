@@ -23,13 +23,14 @@ void ShowMenu()
                                            
     ");
     Console.WriteLine("1 - Registrar bandas.");
-    Console.WriteLine("2 - Consultar bandas registradas.");
+    Console.WriteLine("2 - Consultar bandas registradas."); //conseguir acessar as notas dentro das bandas
     Console.WriteLine("3 - Avaliar bandas registradas.");
-    Console.WriteLine("4 - Exibir a média de uma banda registrada.");
-    Console.WriteLine("5 - Deletar bandas registradas.");
+    Console.WriteLine("4 - Exibir a média de uma banda registrada."); //bandas novas registradas são criadas com uma nota padrão "1", interferindo o calculo
+    Console.WriteLine("5 - Deletar bandas registradas."); //autoexplicativo
     Console.WriteLine("6 - Escolher um tema.");
     Console.WriteLine("7 - Sair do programa.");
-
+    //8 - Pedro é um mongol e logo vou tirar o gatinho
+    
     Console.Write("\nDigite sua opção: ");
     string chosenOption = Console.ReadLine()!;
     //int chosenOptionNumber = int.Parse(chosenOption);
