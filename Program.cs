@@ -20,7 +20,6 @@ ShowMenu();
 void ShowMenu()
 {
     Console.Clear();
-    //Arrumar no futuro culpa do Pedro Console.Clear();
     ShowTitle(@"
  _____ _____ _____ _____ _____ _____ __ __ 
 | __  | __  |  |  |   | |     |   __|  |  |
@@ -28,6 +27,7 @@ void ShowMenu()
 |_____|__|__|_____|_|___|_____|__|    |_|  
                                            
     ");
+    Console.WriteLine($"Total de bandas registradas: {bandsRegistered.Count}\n");
     Console.WriteLine("1 - Registrar bandas.");
     Console.WriteLine("2 - Consultar bandas registradas."); //conseguir acessar as notas dentro das bandas
     Console.WriteLine("3 - Avaliar bandas registradas."); // gravar permanente
